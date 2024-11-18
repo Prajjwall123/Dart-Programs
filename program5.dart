@@ -1,16 +1,26 @@
 import 'dart:io';
 
 void main() {
-  print('Enter the number of terms: ');
-  int terms = int.parse(stdin.readLineSync()!);
+  print('Enter the number: ');
+  int n = int.parse(stdin.readLineSync()!);
+  bool ans = isPrime(n);
+  printAnswer(ans, n);
+}
 
-  int first = 0, second = 1;
+bool isPrime(int num) {
+  if (num <= 1) return false;
 
-  print('Fibonacci Series:');
-  for (int i = 1; i <= terms; i++) {
-    print(first);
-    int next = first + second;
-    first = second;
-    second = next;
+  for (int i = 2; i <= num ~/ 2; i++) {
+    if (num % i == 0) return false;
+  }
+
+  return true;
+}
+
+void printAnswer(bool ans, int n) {
+  if (ans) {
+    print('$n is prime number.');
+  } else {
+    print('$n is not a prime number.');
   }
 }
